@@ -20,18 +20,32 @@ while i <= length(data_array)
         end_value = sorted_data_array(i, column);
     elseif start_class ~= sorted_data_array(i, answer_column) && end_value ~= sorted_data_array(i, column)
         bins{1, length(bins) + 1} = [start_value end_value];
-        start_value = sorted_data_array(i, column)
+        start_value = sorted_data_array(i, column);
         prev_end = start_value;
         end_value = start_value;
-    elseif start_class ~= sorted_data_array(i, answer_column) && end_value == sorted_data_array(i, column)
-        bins{1, length(bins) + 1} = [start_value prev_end];
-        i = i + 1;
-         
-    end
         
+        start_class = sorted_data_array(i, answer_column);
+    elseif start_class ~= sorted_data_array(i, answer_column) && end_value == sorted_data_array(i, column)
+        if start_value ~= end_value
+            bins{1, length(bins) + 1} = [start_value prev_end];
+        end
+        
+        i = i + 1;
+        while end_value == sorted_data_array(i, column) && i <= length(data_array)
+            i = i + 1;
+        end
+        if i >= length(data_array)
+            break;
+        end
+        bins{1, length(bins) + 1} = [end_value end_value];
+        
+        start_value = sorted_data_array(i, column);
+        prev_end = start_value;
+        end_value = start_value;
+        start_class = sorted_data_array(i, answer_column);
+    end
     
-    % Our bin termination case
-    if sorted_data_array(i, answer_column) 
+    i = i + 1;
 end
 
 end
