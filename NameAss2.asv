@@ -30,10 +30,10 @@ classify_example(h_s_setosa, Data(training_set_indicies(1), 1:4)) % setosa
 classify_example(h_s_setosa, Data(training_set_indicies(34), 1:4)) % versicolor
 
 % Classify an example for Versicolor
-classify_example(h_s_versicolor, Data(training_set_indicies(34), 1:4)) % versicolor
+classify_example(h_s_versicolor, Data(training_set_indicies(67), 1:4)) % versicolor
 
 % Classify an example for Virginica
-classify_example(h_s_virginica, Data(training_set_indicies(67), 1:4)) % Virginica
+classify_example(h_s_virginica, [7.3, 2.9, 6.3, 1.8])
 
 % Check the testing set for find_s
 find_s_c_set = {};
@@ -42,9 +42,9 @@ find_s_c_vir = {};
 
 index = 1;
 for i = testing_set_indices
-    find_s_c_set{index} = [classify_example(h_s_setosa, Data(i, 1:4)), Data(i, 5)];
-    find_s_c_ver{index} = [classify_example(h_s_versicolor, Data(i, 1:4)), Data(i, 5)];
-    find_s_c_vir{index} = [classify_example(h_s_virginica, Data(i, 1:4)), Data(i, 5)];
+    find_s_c_set{index} = [classify_example(h_s_setosa, Data(i, 1:4)), Data(i, 5) == 1];
+    find_s_c_ver{1, index} = [classify_example(h_s_versicolor, Data(i, 1:4)), Data(i, 5)];
+    find_s_c_vir{1, index} = [classify_example(h_s_virginica, Data(i, 1:4)), Data(i, 5)];
     index = index + 1;
 end
 
@@ -63,9 +63,9 @@ index = 1;
 for i = testing_set_indices
     % Check to see if it's true for the specific hypothesis and true for at
     % least one of the general hypotheses. Then, True.  Otherwise, False.
-    ce_c_set{index} = [classify_for_candidate_elimination(h_s_setosa, h_g_setosa, Data(i, 1:4)), Data(i, 5)];
-    ce_c_ver{index} = [classify_for_candidate_elimination(h_s_versicolor, h_g_versicolor, Data(i, 1:4)), Data(i, 5)];
-    ce_c_vir{index} = [classify_for_candidate_elimination(h_s_virginica, h_g_virginica, Data(i, 1:4)), Data(i, 5)];
+    ce_c_set{1, index} = [classify_for_candidate_elimination(h_s_setosa, h_g_setosa, Data(i, 1:4)), Data(i, 5)];
+    ce_c_ver{1, index} = [classify_for_candidate_elimination(h_s_versicolor, h_g_versicolor, Data(i, 1:4)), Data(i, 5)];
+    ce_c_vir{1, index} = [classify_for_candidate_elimination(h_s_virginica, h_g_virginica, Data(i, 1:4)), Data(i, 5)];
     
     index = index + 1;
 end
@@ -83,12 +83,20 @@ lte_c_vir = {};
 index = 1;
 for i = testing_set_indices
     % Check to see if it's true for at least one hypothesis.
-    lte_c_set{index} = [classify_for_hypot_list(h_setosa, Data(i, 1:4)), Data(i, 5)];
-    lte_c_ver{index} = [classify_for_hypot_list(h_versicolor, Data(i, 1:4)), Data(i, 5)];
-    lte_c_vir{index} = [classify_for_hypot_list(h_virginica, Data(i, 1:4)), Data(i, 5)];
+    lte_c_set{1, index} = [classify_for_hypot_list(h_setosa, Data(i, 1:4)), Data(i, 5)];
+    lte_c_ver{1, index} = [classify_for_hypot_list(h_versicolor, Data(i, 1:4)), Data(i, 5)];
+    lte_c_vir{1, index} = [classify_for_hypot_list(h_virginica, Data(i, 1:4)), Data(i, 5)];
     
     index = index + 1;
 end
 
-disp('Finished')
-disp('Please see the find_s_, ce_ and lte_ variables for classification results.')
+
+find_s_c_set
+find_s_c_ver
+find_s_c_vir
+ce_c_set
+ce_c_ver
+ce_c_vir
+lte_c_set
+lte_c_ver
+lte_c_vir
