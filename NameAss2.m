@@ -4,6 +4,7 @@
 % Oltutobi Akomolede
 % Jeff Nainaparampil
 
+load iris.dat.mat
 
 bins_of_attributes = {};
 
