@@ -2,7 +2,11 @@ function [ hypothesis_set, nodes_visited ] = list_then_eliminate( data_array, an
 %List then eliminate concept learning. 
 %   List all possible hypothesis. Then, for each hypothesis, check to see
 %   if it classifies all positive examples as positive, and all negative
-%   examples as negative. Does this recursively
+%   examples as negative. Hypotheses are considered nodes in a search
+%   space, and each node is explored using depth first search. We use depth
+%   first search, because this search method is linear in space complexity,
+%   and thus makes the use of the list-then-eliminate algorithm at least partially
+%   feasible. 
 
   
 hypothesis = {};

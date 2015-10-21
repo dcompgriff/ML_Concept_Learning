@@ -42,4 +42,6 @@ end
 
 % Candidate Elimination for Setosa
 %h_s_setosa = candidate_eliminiation(Data, 1, 5, bins_of_attributes);
+disp('Running list-then-eliminate. Intermediate amounts of nodes processed are displayed.')
+disp('The final number of nodes visited will also be displayed.')
 [h_s_setosa, nodes_visited] = list_then_eliminate(Data, 1, 5, bins_of_attributes);

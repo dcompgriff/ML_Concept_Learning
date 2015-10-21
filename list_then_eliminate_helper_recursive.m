@@ -14,7 +14,12 @@ if is_consistent
     consistent_hypotheses{1} = current_hypothesis;
 end
 
-for attrib = 1:length(current_hypothesis)
+%We make the assumption here that all of our positive examples cannot be
+%classified by a single, highly specific hypothesis, where each attribute
+%value is a single bin. Thus, we prune the attributes considered to all
+%attributes except 1. This significantly reduces the number of nodes that
+%must be processed. 
+for attrib = 2:length(current_hypothesis)
     if current_hypothesis{1,attrib}{1,1} == -1
         for bin = 1:length(bins_of_attributes{1, attrib})
             new_hypothesis = current_hypothesis;
