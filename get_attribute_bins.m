@@ -48,5 +48,7 @@ while i <= length(data_array)
     i = i + 1;
 end
 
+bins{1, length(bins) + 1} = [start_value sorted_data_array(i-1, column)];
+
 end
 

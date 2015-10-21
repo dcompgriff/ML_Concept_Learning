@@ -30,7 +30,7 @@ for i = 1:length(data_array)
                     end
                 end
             end 
-        end
+        end        
     end
 end
 
