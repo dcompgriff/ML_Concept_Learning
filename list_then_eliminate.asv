@@ -1,0 +1,26 @@
+function [ hypothesis_set ] = list_then_eliminate( data_array, answer, answer_column, bins_of_attributes )
+%List then eliminate concept learning. 
+%   List all possible hypothesis. Then, for each hypothesis, check to see
+%   if it classifies all positive examples as positive, and all negative
+%   examples as negative. 
+
+  
+hypothesis = {};
+
+%For each attribute
+for i = 1:length(bins_of_attributes)
+    
+    %For each bin
+    for j = 1:length(bins_of_attributes{1, i})
+        %Make a hypothesis with each combination of bins for each
+        %attribute. 
+        hypothesis{1, i} = bins_of_attributes{1,j}{1,k};
+        
+        
+        
+    end
+    
+end
+
+end
+
