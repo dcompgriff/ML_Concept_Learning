@@ -87,26 +87,11 @@ for i = 1:length(data_array)
         % Check to make sure the specific hypothesis is more specific than
         % at least one general hypothesis
         is_more_specific = false;
-        for g_hyp = 1:length(g_hypothesis)
-           if is_more_general_than_or_equal(g_hypothesis{1, g_hyp}, s_hypothesis)
-               is_more_specific = true;
-               break;
-           end
-        end
-        
-        if ~is_more_specific
-            disp('There is no most specific hypothesis that can consistently classify the data.')
-            disp('The following training example is inconsistent with learning thus far.')
-            data_array(i, :)
-            s_hypothesis = {};
-            g_hypothesis = {};
-            return;
-        end
+        for g_hyp = 1
         
     elseif data_array(i, answer_column) ~= answer
         % Check to see if the s_hypothesis is inconsistent with data set
         if classify_example(s_hypothesis, data_array(i, 1:(answer_column-1)))
-            disp('There is no most general set of hypotheses that can consistently classify the data.')
             disp('The following training example is inconsistent with learning thus far.')
             data_array(i, :)
             s_hypothesis = {};

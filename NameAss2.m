@@ -47,4 +47,6 @@ end
 %[h_s_setosa, nodes_visited] = list_then_eliminate(Data, 1, 5, bins_of_attributes);
 
 
-[h_s_setosa, h_g_setosa] = candidate_eliminiation(Data, 1, 5, bins_of_attributes)
+[h_s_setosa, h_g_setosa] = candidate_eliminiation(Data, 1, 5, bins_of_attributes);
+[h_s_versicolor, h_g_versicolor] = candidate_eliminiation(Data, 2, 5, bins_of_attributes);
+[h_s_virginica, h_g_virginica] = candidate_eliminiation(Data, 3, 5, bins_of_attributes);

@@ -8,9 +8,17 @@ for i = 1:length(hypothesis_2)
     % Check to see if the bin in hypothesis_2 is in hypothesis_1
     if isequal(hypothesis_1{1, i}{1,1}, -1)
         continue;
+    elseif  isequal(hypothesis_2{1, i}, {})
+        continue;
+    elseif isequal(hypothesis_1{1, i}, {}) && isequal(hypothesis_2{1, i}, {})
+        continue;
+    elseif isequal(hypothesis_1{1, i}, {})
+        is_general = false;
+        return
     elseif isequal(hypothesis_1{1, i}{1,1}, hypothesis_2{1,i}{1,1})
         continue;
     end
+    
     is_general = false;
     return;
 end
